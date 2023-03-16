@@ -10,6 +10,7 @@ document.onkeydown = function(e) {
 
     if(e.keyCode == 38) {
         dino = document.querySelector('.dino');
+        // Enabling the jump animation
         dino.classList.add('animateDino');
         setTimeout(() => {
             dino.classList.remove('animateDino')
@@ -18,7 +19,9 @@ document.onkeydown = function(e) {
 
     if(e.keyCode == 39) {
         dino = document.querySelector('.dino');
+        // Current path of dino on X axis
         dinoX = parseInt(window.getComputedStyle(dino, null).getPropertyValue('left'));
+        // Update path of dino on X axis 
         dino.style.left = dinoX + 112 + "px";
     }
     if(e.keyCode == 37) {
@@ -31,15 +34,19 @@ setInterval(() => {
     dino = document.querySelector('.dino');
     gameOver = document.querySelector('.gameOver');
     obstacle = document.querySelector('.obstacle');
+
+    // Path of dino on X and Y axis respectively
     dx = parseInt(window.getComputedStyle(dino, null).getPropertyValue('left'));
     dy = parseInt(window.getComputedStyle(dino, null).getPropertyValue('top'));
     
     ox = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue('left'));
     oy = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue('top'));
 
+    // offset between dino and obstacle on X and Y axis
     offsetX = Math.abs(dx-ox);
     offsetY = Math.abs(dy-oy);
 
+    // Game end
     if(offsetX < 73 && offsetY < 52){
         gameOver.innerHTML = "Game Over - Reload it";
         obstacle.classList.remove('obstacleAni');
@@ -49,6 +56,8 @@ setInterval(() => {
             audio.pause();
         }, 1000);
     }
+
+    // dino crosses the obstacle
     else if (offsetX < 145 && cross) {
         score += 1;
         updateScore(score);
@@ -56,6 +65,8 @@ setInterval(() => {
         setTimeout(() => {
             cross = true;
         }, 1000);
+
+        // obstacle becomes faster after each cross
         setTimeout(() => {
             aniDur = parseFloat(window.getComputedStyle(obstacle, null).getPropertyValue('animation-duration'));
             newDur = aniDur - 0.1;
