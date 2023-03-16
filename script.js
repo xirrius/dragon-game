@@ -46,7 +46,7 @@ setInterval(() => {
     offsetX = Math.abs(dx-ox);
     offsetY = Math.abs(dy-oy);
 
-    // Game end
+    // dino collides with obstacle
     if(offsetX < 73 && offsetY < 52){
         gameOver.innerHTML = "Game Over - Reload it";
         obstacle.classList.remove('obstacleAni');
