@@ -35,7 +35,7 @@ setInterval(() => {
     dy = parseInt(window.getComputedStyle(dino, null).getPropertyValue('top'));
     
     ox = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue('left'));
-    oy = parseInt(window.getComputedStyle(dino, null).getPropertyValue('left'));
+    oy = parseInt(window.getComputedStyle(dino, null).getPropertyValue('top'));
 
     offsetX = Math.abs(dx-ox);
     offsetY = Math.abs(dy-oy);
